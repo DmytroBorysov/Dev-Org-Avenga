@@ -1,6 +1,5 @@
-// Use .soql files to store SOQL queries.
-// You can execute queries in VS Code by selecting the
-//     query text and running the command:
-//     SFDX: Execute SOQL Query with Currently Selected Text
-
-SELECT Id, Name FROM Account
+SELECT Transaction__r.Payment_Type__c, SUM(Quantity__c) totalQuantity
+FROM Line_Item__c
+WHERE
+Transaction__r.Status__c = 'Closed'
+GROUP BY Transaction__r.Payment_Type__c

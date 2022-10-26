@@ -1,0 +1,13 @@
+<template>
+  <lightning-card title="Line Items">
+    <template if:true={lineItems.data}>
+      <lightning-datatable
+        data={lineItems.data}
+        columns={columns}
+        key-field="Id"
+        hide-checkbox-column
+      >
+      </lightning-datatable>
+    </template>
+  </lightning-card>
+</template>
