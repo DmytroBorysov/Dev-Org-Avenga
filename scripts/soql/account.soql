@@ -1,5 +1,1 @@
-SELECT Transaction__r.Payment_Type__c, SUM(Quantity__c) totalQuantity
-FROM Line_Item__c
-WHERE
-Transaction__r.Status__c = 'Closed'
-GROUP BY Transaction__r.Payment_Type__c
+SELECT Product__c, SUM(Amount__c) FROM Line_Item__c WHERE Transaction__r.Status__c != 'Cancelled' AND Transaction__r.CreatedDate = LAST_N_DAYS:30 GROUP BY Product__c
