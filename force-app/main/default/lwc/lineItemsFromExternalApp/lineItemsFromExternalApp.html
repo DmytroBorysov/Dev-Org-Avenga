@@ -1,11 +1,16 @@
 <!-- sldsValidatorIgnore -->
 <template>
-  <lightning-card title="Line Items">
+  <lightning-card title="Line Items from external app">
+    <template if:true={errorMessage}>
+      <p class="slds-text-color_error slds-align_absolute-center">
+        {errorMessage}
+      </p>
+    </template>
     <template if:true={lineItems}>
       <lightning-datatable
         data={lineItems}
         columns={columns}
-        key-field="Id"
+        key-field="productCode"
         hide-checkbox-column
       >
       </lightning-datatable>

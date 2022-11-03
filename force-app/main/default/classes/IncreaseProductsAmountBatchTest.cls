@@ -14,7 +14,7 @@ public class IncreaseProductsAmountBatchTest {
   @IsTest
   static void test() {
     Test.startTest();
-    IncreaseProductsAmountBatch increaseProductsAmount = new IncreaseProductsAmountBatch();
+	IncreaseProductsAmountBatch increaseProductsAmount = new IncreaseProductsAmountBatch();
     Database.executeBatch(increaseProductsAmount);
     Test.stopTest();
 

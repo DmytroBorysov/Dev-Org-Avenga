@@ -7,85 +7,12 @@
   <aura:attribute name="columns" type="List" />
   <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 
-  <div class="slds-box slds-theme_default">
-    <h2
-      id="element-with-table-label"
-      class="slds-text-heading_medium slds-m-bottom_small"
-    >
-      Most profitable transactions
-    </h2>
-    <table class="slds-table slds-table_cell-buffer slds-table_bordered">
-      <thead>
-        <tr class="slds-line-height_reset">
-          <th class="" scope="col">
-            <div class="slds-truncate" title="Transaction Number">
-              Transaction Number
-            </div>
-          </th>
-          <th scope="col">
-            <div class="slds-truncate" title="Created Date">Created Date</div>
-          </th>
-          <th scope="col">
-            <div class="slds-truncate" title="Status">Status</div>
-          </th>
-          <th scope="col">
-            <div class="slds-truncate" title="Payment Type">Payment Type</div>
-          </th>
-          <th scope="col" style="width: 7%">
-            <div class="slds-truncate" title="Amount">Amount</div>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <aura:iteration items="{!v.transactions}" var="transaction">
-          <tr class="slds-hint-parent">
-            <th data-label="Transaction Number" scope="row">
-              <div class="slds-truncate" title="{!transaction.Name}">
-                <a
-                  href="{! '/lightning/r/Transaction__c/'+transaction.Id+'/view'}"
-                  tabindex="-1"
-                  >{!transaction.Name}</a
-                >
-              </div>
-            </th>
-            <td data-label="Created Date">
-              <div class="slds-truncate">
-                <lightning:formattedDateTime
-                  value="{!transaction.CreatedDate}"
-                />
-              </div>
-            </td>
-            <td data-label="Status">
-              <div class="slds-truncate" title="{!transaction.Status__c}">
-                {!transaction.Status__c}
-              </div>
-            </td>
-            <td data-label="Payment Type">
-              <div class="slds-truncate" title="{!transaction.Payment_Type__c}">
-                {!transaction.Payment_Type__c}
-              </div>
-            </td>
-            <td data-label="Amount">
-              <div class="slds-truncate">
-                <lightning:formattedNumber
-                  class="slds-float--right"
-                  value="{!transaction.Total_Amount__c}"
-                  format-style="currency"
-                  currencyDisplayAs="symbol"
-                />
-              </div>
-            </td>
-          </tr>
-        </aura:iteration>
-      </tbody>
-    </table>
-
+  <lightning:card title="Most profitable transactions">
     <lightning:datatable
-      class="slds-hide"
       keyField="Id"
       data="{!v.transactions}"
       columns="{!v.columns}"
       hideCheckboxColumn="true"
     />
-  </div>
+  </lightning:card>
 </aura:component>

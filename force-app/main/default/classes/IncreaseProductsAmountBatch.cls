@@ -12,7 +12,7 @@ public class IncreaseProductsAmountBatch implements Database.Batchable<sObject>,
     ]) {
       productIds.add((Id) result.get('Product__c'));
     }
-
+	system.debug('productIds = '+productIds);
     return Database.getQueryLocator(
       'SELECT Available_Amount__c FROM Product__c WHERE Id IN :productIds'
     );
@@ -25,6 +25,7 @@ public class IncreaseProductsAmountBatch implements Database.Batchable<sObject>,
     for (Product__c product : productsToUpdate) {
       product.Available_Amount__c += 100;
     }
+      System.debug('productsToUpdate = '+ productsToUpdate);
     update productsToUpdate;
   }
 
